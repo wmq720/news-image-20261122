@@ -226,7 +226,7 @@ for i, c in enumerate(BIG):
 
 # ---------------------------------------------------------------- small cards
 SMALL = [
-    dict(n=4, tag="BITCOIN $60K", kick="4  GLOBAL \u00b7 MARKETS",
+    dict(n=4, tag="BITCOIN $60,000", kick="4  GLOBAL \u00b7 MARKETS",
          title="Bitcoin back above $60,000",
          summ="Rebounds from a two-year low near $55,106 to $60,192. +2.2% in 24h.",
          src="CoinStats"),
@@ -240,11 +240,11 @@ SMALL = [
          src="Dawn"),
     dict(n=7, tag="KYIV: 161 DOWN", kick="7  KYIV, UKRAINE \u00b7 WAR",
          title="Ukraine downs 161 of 186 Russian drones",
-         summ="161 of 186 drones downed or suppressed by 08:00 Sunday; 18 sites hit.",
+         summ="161 of 186 drones downed by 08:00 Sunday; 18 sites hit.",
          src="Ukrinform"),
     dict(n=8, tag="F1 LAS VEGAS", kick="8  LAS VEGAS, USA \u00b7 SPORT",
          title="Verstappen wins Las Vegas Grand Prix",
-         summ="Holds off Norris by 0.639s. Hamilton and Leclerc collide; both penalised 10s.",
+         summ="Holds off Norris. Hamilton and Leclerc collide; both penalised 10s.",
          src="Reuters"),
     dict(n=9, tag="NWSL TITLE", kick="9  KANSAS CITY, USA \u00b7 SPORT",
          title="Kansas City win first NWSL title",
@@ -377,10 +377,10 @@ for row in range(2):
         if over:
             warns.append("small title %d over" % c["n"])
         text_block(d, sx, sy + 72, tlines, F(SANS_B, 13), INK, 16)
-        slines, over = wrap(c["summ"], F(SANS, 10), sm_w, 2)
+        slines, over = wrap(c["summ"], F(SANS, 11), sm_w, 2)
         if over:
             warns.append("small summ %d over" % c["n"])
-        text_block(d, sx, sy + 106, slines, F(SANS, 10), INK, 12.5)
+        text_block(d, sx, sy + 104, slines, F(SANS, 11), INK, 13.5)
         d.text((sx, sy + 132), "Source: " + c["src"], font=F(SANS, 9),
                fill=GRAY)
 
@@ -427,31 +427,31 @@ for i, (dx, dy) in enumerate(DOTS, start=1):
     d.text((dx - f.getlength(s) / 2, dy - 5), s, font=f, fill=(255, 255, 255))
 
 BRIEFS = [
-    (14, "COP31 deadlock; groups call it \u2018most disappointing COP\u2019. (Al Jazeera)"),
-    (15, "Iran to begin rolling blackouts from Sunday as war damage bites. (AFP)"),
-    (16, "Hormuz tanker attacks at highest level since the war began. (Gulf News)"),
-    (17, "Houthis deny Mecca threat; Saudi alert issued, then lifted. (Times Now)"),
-    (18, "Saudi coalition says it downed a Houthi missile aimed west. (Yeni Safak)"),
-    (19, "Zelensky seeks ceasefire to free 15 occupied villages. (Ukrainska Pravda)"),
+    (14, "COP31 deadlock; groups call it \u2018disappointing COP\u2019. (Al Jazeera)"),
+    (15, "Iran to begin blackouts from Sunday as war damage bites. (AFP)"),
+    (16, "Hormuz attacks at highest level since the war began. (Gulf News)"),
+    (17, "Houthis deny Mecca threat; alert issued, then lifted. (Times Now)"),
+    (18, "Coalition says it downed a Houthi missile aimed west. (Yeni Safak)"),
+    (19, "Zelensky seeks ceasefire to free 15 villages. (Ukrainska Pravda)"),
     (20, "Ukraine guards down a new Russian Filin cruise missile. (Ukrinform)"),
     (21, "Kyiv: Russia lost 2,310 troops in a day; total ~1,637,170. (Ukrinform)"),
-    (22, "Qatar team in Tehran; minister meets CENTCOM chief in Doha. (Yeni Safak)"),
-    (23, "China opposes FCC vote on Chinese telecoms in US numbers. (Reuters)"),
-    (24, "Myanmar government calls an ASEAN decision \u2018unfair, unbalanced\u2019. (Reuters)"),
-    (25, "Indonesia factory fire kills 3; 36 workers missing in West Java. (Reuters)"),
-    (26, "North Korea moves its 2027 Pyongyang marathon to October. (Reuters)"),
-    (27, "Iraq MPs probe Basra power fire that killed 4, injured 35. (Shafaq News)"),
-    (28, "PL: Leeds 4-1 Chelsea, Arsenal 2-2 Newcastle, City 1-1 Fulham. (AFP)"),
-    (29, "US stocks in worst week since the pandemic: Dow -8%, Nasdaq -10%. (IBD)"),
+    (22, "Qatar team in Tehran; meets CENTCOM chief in Doha. (Yeni Safak)"),
+    (23, "China opposes FCC vote on telecoms in US numbers. (Reuters)"),
+    (24, "Myanmar calls an ASEAN decision \u2018unfair, unbalanced\u2019. (Reuters)"),
+    (25, "Indonesia fire kills 3; 36 workers missing in West Java. (Reuters)"),
+    (26, "North Korea moves its 2027 marathon to October. (Reuters)"),
+    (27, "Iraq MPs probe Basra fire that killed 4, injured 35. (Shafaq News)"),
+    (28, "Leeds 4-1 Chelsea, Arsenal 2-2 Newcastle, City 1-1 Fulham. (AFP)"),
+    (29, "US stocks in worst week: Dow -8%, Nasdaq -10%. (IBD)"),
     (30, "Brent $92.57, down 3.41% for a third weekly fall. (FinanceFeeds)"),
-    (31, "Gold down ~9.4% in a week, biggest drop in eight months. (Weekly recap)"),
-    (32, "Asteroid \u20182026 QQ8\u2019, a 2m \u2018mini-moon\u2019, leaves in early December. (CNN)"),
-    (33, "SpaceX Cargo Dragon splashes down off LA with lab-grown tissue. (NASA)"),
+    (31, "Gold down ~9.4%, biggest drop in eight months. (Weekly recap)"),
+    (32, "Asteroid \u20182026 QQ8\u2019, a 2m \u2018mini-moon\u2019, leaves in December. (CNN)"),
+    (33, "SpaceX Dragon splashes down off LA with lab-grown tissue. (NASA)"),
     (34, "Curiosity finds \u2018potato-chip\u2019 crystals at its Nazca site. (Times of India)"),
     (35, "Signal blocks in-app screenshots on Android and iOS. (Daily AI Brief)"),
 ]
-bf = F(SANS, 9)
-bnf = F(SANS_B, 9)
+bf = F(SANS, 10)
+bnf = F(SANS_B, 10)
 for i, (n, txt) in enumerate(BRIEFS):
     col = 0 if i < 11 else 1
     bx = 342 + col * 334
