@@ -55,9 +55,12 @@ def wrap(text, font, max_w, max_lines):
     return lines[:max_lines], over
 
 
-def text_block(d, x, y, lines, font, fill, leading):
+def text_block(d, x, y, lines, font, fill, leading, stroke_width=0,
+               stroke_fill=None):
     for i, ln in enumerate(lines):
-        d.text((x, y + i * leading), ln, font=font, fill=fill)
+        d.text((x, y + i * leading), ln, font=font, fill=fill,
+               stroke_width=stroke_width,
+               stroke_fill=stroke_fill if stroke_fill is not None else fill)
 
 
 img = Image.new("RGB", (W, H), PAPER)
@@ -380,7 +383,8 @@ for row in range(2):
         slines, over = wrap(c["summ"], F(SANS, 10), sm_w, 2)
         if over:
             warns.append("small summ %d over" % c["n"])
-        text_block(d, sx, sy + 106, slines, F(SANS, 10), INK, 12.5)
+        text_block(d, sx, sy + 106, slines, F(SANS, 10), INK, 12.5,
+                   stroke_width=1, stroke_fill=INK)
         d.text((sx, sy + 132), "Source: " + c["src"], font=F(SANS, 9),
                fill=GRAY)
 
@@ -457,8 +461,9 @@ for i, (n, txt) in enumerate(BRIEFS):
     bx = 342 + col * 334
     by = 812 + (i % 11) * 12.5
     num = str(n) + "  "
-    d.text((bx, by), num, font=bnf, fill=RED)
-    d.text((bx + bnf.getlength(num), by), txt, font=bf, fill=INK)
+    d.text((bx, by), num, font=bnf, fill=RED, stroke_width=1, stroke_fill=RED)
+    d.text((bx + bnf.getlength(num), by), txt, font=bf, fill=INK,
+           stroke_width=1, stroke_fill=INK)
     w = bnf.getlength(num) + bf.getlength(txt)
     if w > 326:
         warns.append("brief %d over by %.0fpx" % (n, w - 326))
